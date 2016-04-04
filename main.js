@@ -95,7 +95,6 @@ Cylon.robot({
       } else if (pair.y > 0) {
         my.drone.backward(validatePitch(pair.y));
       }
-
       if (pair.x > 0) {
         my.drone.right(validatePitch(pair.x));
       } else if (pair.x < 0) {
@@ -105,13 +104,11 @@ Cylon.robot({
 
     setInterval(function() {
       var pair = rightStick;
-
       if (pair.y < 0) {
         my.drone.up(validatePitch(pair.y));
       } else if (pair.y > 0) {
         my.drone.down(validatePitch(pair.y));
       }
-
       if (pair.x > 0) {
         my.drone.clockwise(validatePitch(pair.x));
       } else if (pair.x < 0) {
