@@ -1,8 +1,10 @@
 var Cylon = require('cylon');
 var util = require('util');
 
-Cylon.robot({
+Cylon.api('http');
 
+Cylon.robot({
+  name: 'BebopUltimate',
   connections: {
     keyboard: {adaptor: 'keyboard'},
     joystick: {adaptor: "joystick"},
@@ -15,7 +17,6 @@ Cylon.robot({
   },
 
   work: function(my) {
-
     var rightStick = { x: 0.0, y: 0.0 }, leftStick = { x: 0.0, y: 0.0 };
     var air = false;
 
@@ -108,7 +109,7 @@ Cylon.robot({
       leftStick.y = data;
     });
 
-    setInterval(function() {
+    constantly(function() {
       var pair = leftStick;
       if (pair.y < 0) {
         my.drone.forward(validatePitch(pair.y));
@@ -120,9 +121,9 @@ Cylon.robot({
       } else if (pair.x < 0) {
         my.drone.left(validatePitch(pair.x));
       }
-    }, 0);
+    });
 
-    setInterval(function() {
+    constantly(function() {
       var pair = rightStick;
       if (pair.y < 0) {
         my.drone.up(validatePitch(pair.y));
@@ -134,7 +135,7 @@ Cylon.robot({
       } else if (pair.x < 0) {
         my.drone.counterClockwise(validatePitch(pair.x));
       }
-    }, 0);
+    });
 
     setInterval(function() {
       //my.drone.stop();
