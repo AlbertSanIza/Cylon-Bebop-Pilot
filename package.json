@@ -1,0 +1,10 @@
+{
+  "name": "Cylon-Bebop-Pilot",
+  "description": "",
+  "version": "0.0.1",
+  "main": "main.js",
+  "dependencies": {
+      "cylon": "*",
+      "cylon-keyboard": "*"
+  }
+}
