@@ -5,6 +5,8 @@
   "main": "main.js",
   "dependencies": {
       "cylon": "*",
-      "cylon-keyboard": "*"
+      "cylon-keyboard": "*",
+      "cylon-joystick": "*",
+      "cylon-bebop": "*"
   }
 }
