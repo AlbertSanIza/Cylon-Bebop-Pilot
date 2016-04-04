@@ -29,6 +29,42 @@ Cylon.robot({
         //my.drone.land();
       }
     });
+    my.keyboard.on('return', function(key) {
+      println("Stop");
+      //my.drone.stop();
+    });
+    my.keyboard.on('w', function(key) {
+      println("Up");
+      //my.drone.up();
+    });
+    my.keyboard.on('s', function(key) {
+      println("Down");
+      //my.drone.down();
+    });
+    my.keyboard.on('a', function(key) {
+      println("Counter Clockwise");
+      //my.drone.counterClockwise();
+    });
+    my.keyboard.on('d', function(key) {
+      println("Clockwise");
+      //my.drone.clockwise();
+    });
+    my.keyboard.on('up', function(key) {
+      println("Forward");
+      //my.drone.forward();
+    });
+    my.keyboard.on('down', function(key) {
+      println("Backward");
+      //my.drone.backward();
+    });
+    my.keyboard.on('left', function(key) {
+      println("Left");
+      //my.drone.left();
+    });
+    my.keyboard.on('right', function(key) {
+      println("Right");
+      //my.drone.right();
+    });
 
     my.controller.on("square:press", function() {
       my.drone.takeOff();
