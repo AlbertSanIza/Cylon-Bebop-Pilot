@@ -6,7 +6,7 @@ cylon.robot({
     bebop:  { adaptor: 'bebop' }
   },
   devices: {
-    controller: { driver: "dualshock-3", connection: "joystick" },
+    controller: { driver: "xbox-360", connection: "joystick" },
     drone:      { driver: "bebop", connection: "bebop" }
   },
   work: function() {
