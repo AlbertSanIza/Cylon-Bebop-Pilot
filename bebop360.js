@@ -14,7 +14,7 @@ cylon.robot({
         rightStick = { x: 0.0, y: 0.0 },
         leftStick = { x: 0.0, y: 0.0 };
 
-    that.controller.on("a:press", function() {
+    that.controller.on("x:press", function() {
       that.drone.takeOff();
     });
 
