@@ -18,11 +18,11 @@ cylon.robot({
       that.drone.takeOff();
     });
 
-    that.controller.on("rt:press", function() {
+    that.controller.on("x:press", function() {
       that.drone.stop();
     });
 
-    that.controller.on("lt:press", function() {
+    that.controller.on("rt:press", function() {
       that.drone.land();
     });
 
