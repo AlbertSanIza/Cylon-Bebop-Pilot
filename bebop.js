@@ -84,7 +84,7 @@ function validatePitch(data) {
   var value = Math.abs(data);
   if (value >= 0.1) {
     if (value <= 1.0) {
-      return Math.round(value * 100);
+      return Math.round(value * 50);
     } else {
       return 100;
     }

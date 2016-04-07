@@ -18,27 +18,27 @@ cylon.robot({
       that.drone.takeOff();
     });
 
-    that.controller.on("lt:move", function() {
+    that.controller.on("rt:move", function() {
       that.drone.stop();
     });
 
-    that.controller.on("rt:move", function() {
+    that.controller.on("lt:move", function() {
       that.drone.land();
     });
 
-    that.controller.on("right_x:move", function(data) {
+    that.controller.on("left_x:move", function(data) {
       rightStick.x = data;
     });
 
-    that.controller.on("right_y:move", function(data) {
+    that.controller.on("left_x_y:move", function(data) {
       rightStick.y = data;
     });
 
-    that.controller.on("left_x:move", function(data) {
+    that.controller.on("right_x:move", function(data) {
       leftStick.x = data;
     });
 
-    that.controller.on("left_y:move", function(data) {
+    that.controller.on("right_y:move", function(data) {
       leftStick.y = data;
     });
 
