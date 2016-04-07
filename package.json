@@ -8,6 +8,7 @@
       "cylon-keyboard": "*",
       "cylon-joystick": "*",
       "cylon-bebop": "*",
-      "cylon-api-http": "*"
+      "cylon-api-http": "*",
+      "node-bebop": "*"
   }
 }
