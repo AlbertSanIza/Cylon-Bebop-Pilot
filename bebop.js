@@ -26,6 +26,10 @@ cylon.robot({
       that.drone.land();
     });
 
+    that.controller.on("home:press", function() {
+      that.drone.emergency();
+    });
+
     that.controller.on("right_x:move", function(data) {
       rightStick.x = data;
     });

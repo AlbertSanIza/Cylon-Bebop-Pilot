@@ -17,11 +17,14 @@ cylon.robot({
     that.controller.on("right:press", function() {
       that.drone.takeOff();
     });
+    that.controller.on("start:press", function() {
+      that.drone.land();
+    });
     that.controller.on("lb:press", function() {
       that.drone.stop();
     });
-    that.controller.on("start:press", function() {
-      that.drone.land();
+    that.controller.on("rb:press", function() {
+      that.drone.emergency();
     });
     that.controller.on("lt:move", function() {
       that.drone.backflip();
