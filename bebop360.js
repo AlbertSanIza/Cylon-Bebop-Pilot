@@ -26,31 +26,28 @@ cylon.robot({
     that.controller.on("rb:press", function() {
       that.drone.emergency();
     });
-    that.controller.on("lt:move", function() {
-      that.drone.backflip();
-    });
-    that.controller.on("rt:move", function() {
-      that.drone.frontflip();
-    });
-    that.controller.on("left_x:move", function(data) {
-      rightStick.x = data;
-    });
-    that.controller.on("left_x_y:move", function(data) {
-      rightStick.y = data;
+    that.controller.on("rb:press", function() {
+      that.drone.emergency();
     });
     that.controller.on("right_x:move", function(data) {
-      leftStick.x = data;
+      rightStick.x = data;
     });
     that.controller.on("right_y:move", function(data) {
+      rightStick.y = data;
+    });
+    that.controller.on("left_x:move", function(data) {
+      leftStick.x = data;
+    });
+    that.controller.on("left_y:move", function(data) {
       leftStick.y = data;
     });
 
     setInterval(function() {
-      var pair = leftStick;
+      var pair = rightStick;
 
-      if (pair.y < 0) {
+      if (pair.y > 0) {
         that.drone.forward(validatePitch(pair.y));
-      } else if (pair.y > 0) {
+      } else if (pair.y < 0) {
         that.drone.backward(validatePitch(pair.y));
       }
 
@@ -62,11 +59,11 @@ cylon.robot({
     }, 0);
 
     setInterval(function() {
-      var pair = rightStick;
+      var pair = leftStick;
 
-      if (pair.y < 0) {
+      if (pair.y > 0) {
         that.drone.up(validatePitch(pair.y));
-      } else if (pair.y > 0) {
+      } else if (pair.y < 0) {
         that.drone.down(validatePitch(pair.y));
       }
 
@@ -87,7 +84,7 @@ function validatePitch(data) {
   var value = Math.abs(data);
   if (value >= 0.1) {
     if (value <= 1.0) {
-      return Math.round(value * 100);
+      return Math.round(value * 50);
     } else {
       return 100;
     }
