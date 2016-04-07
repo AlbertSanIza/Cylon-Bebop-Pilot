@@ -8,7 +8,7 @@ Cylon.robot({
     controller: { driver: 'xbox-360' }
   },
   work: function(my) {
-    ["right"].forEach(function(button) {
+    ["right", "lb", "rb", "start"].forEach(function(button) {
       my.controller.on(button + ":press", function() {
         console.log("Button " + button + " pressed.");
       });
