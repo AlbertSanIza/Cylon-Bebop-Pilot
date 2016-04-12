@@ -1,7 +1,5 @@
 var Cylon = require('cylon');
 
-var bebopSpeed = 50;
-
 function validatePitch(data) {
   var value = Math.abs(data);
   if (value >= 0.2) {
