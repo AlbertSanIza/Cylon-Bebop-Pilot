@@ -83,14 +83,14 @@ Cylon.robot({
     });
 
     my.drone.on("battery", function(val) {
-      console.log("\nBattery Level: " + val "\n");
+      console.log("\nBattery Level: " + val + "\n");
     });
     my.drone.on("ready", function() {
       console.log("\nReady!\n");
     });
     my.drone.on("takingOff", function() {
       console.log("\nTaking Off...\n");
-      my.drone.stopRecording();
+      //my.drone.stopRecording();
     });
     my.drone.on("landing", function() {
       console.log("\nLanding...\n");
@@ -131,7 +131,7 @@ Cylon.robot({
     });
 
     setInterval(function() {
-      drone.stop();
+      my.drone.stop();
     }, 10);
 
   }
