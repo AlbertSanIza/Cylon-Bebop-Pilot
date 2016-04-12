@@ -1,10 +1,17 @@
 var Cylon = require('cylon');
 
-function validatePitch(data) {
+function validatePitch(data, l2state, r2state) {
   var value = Math.abs(data);
   if (value >= 0.2) {
     if (value <= 1.0) {
-      return Math.round(value * 50);
+      var speed = 50;
+      if(l2state == true) {
+        speed = speed + 25;
+      }
+      if(r2state == true) {
+        speed = speed + 25;
+      }
+      return Math.round(value * speed);
     } else {
       return 100;
     }
@@ -67,17 +74,22 @@ Cylon.robot({
       my.drone.stop();
     });
 
+    var l2 = false, r2 = false;
     my.controller.on("l2:press", function() {
       console.log("\nl2:press\n");
+      l2 = true;
     });
     my.controller.on("l2:release", function() {
       console.log("\nl2:release\n");
+      l2 = false;
     });
     my.controller.on("r2:press", function() {
       console.log("\nr2:press\n");
+      r2 = true;
     });
     my.controller.on("r2:release", function() {
       console.log("\nr2:release\n");
+      r2 = false;
     });
 
     my.drone.on("battery", function(val) {
@@ -103,28 +115,28 @@ Cylon.robot({
     constantly(function() {
       var pair = leftStick;
       if (pair.y < 0) {
-        my.drone.up(validatePitch(pair.y));
+        my.drone.up(validatePitch(pair.y, l2, r2));
       } else if (pair.y > 0) {
-        my.drone.down(validatePitch(pair.y));
+        my.drone.down(validatePitch(pair.y, l2, r2));
       }
       if (pair.x > 0) {
-        my.drone.clockwise(validatePitch(pair.x));
+        my.drone.clockwise(validatePitch(pair.x, l2, r2));
       } else if (pair.x < 0) {
-        my.drone.counterClockwise(validatePitch(pair.x));
+        my.drone.counterClockwise(validatePitch(pair.x, l2, r2));
       }
     });
 
     constantly(function() {
       var pair = rightStick;
       if (pair.y < 0) {
-        my.drone.forward(validatePitch(pair.y));
+        my.drone.forward(validatePitch(pair.y, l2, r2));
       } else if (pair.y > 0) {
-        my.drone.backward(validatePitch(pair.y));
+        my.drone.backward(validatePitch(pair.y, l2, r2));
       }
       if (pair.x > 0) {
-        my.drone.right(validatePitch(pair.x));
+        my.drone.right(validatePitch(pair.x, l2, r2));
       } else if (pair.x < 0) {
-        my.drone.left(validatePitch(pair.x));
+        my.drone.left(validatePitch(pair.x, l2, r2));
       }
     });
 
